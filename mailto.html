@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="mr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>शेतीस पाणी मिळण्याबाबत विनंती</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f2f5;
+            margin: 0;
+        }
+
+        .card {
+            background: #ffffff;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 500px;
+            width: 90%;
+        }
+
+        h2 {
+            color: #333;
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            color: #666;
+            font-size: 16px;
+            margin-bottom: 30px;
+            line-height: 1.5;
+        }
+
+        .email-btn {
+            background-color: #EA4335;
+            /* Gmail Red */
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.1s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .email-btn:hover {
+            background-color: #C5221F;
+        }
+
+        .email-btn:active {
+            transform: scale(0.98);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="card">
+        <h2>शेतीस पाणी मिळण्याबाबत विनंती अर्ज</h2>
+        <p>खालील बटणावर क्लिक करा. तुमचा ईमेल ॲप उघडेल आणि संपूर्ण मेसेज आपोआप टाईप होईल. तुम्ही फक्त समोरच्याचा ईमेल
+            आयडी टाकून सेंड करू शकता.</p>
+        <button class="email-btn" onclick="composeEmail()">
+            ✉️ ईमेल द्वारे पाठवा
+        </button>
+    </div>
+
+    <script>
+        function composeEmail() {
+            // Define the subject
+            const subject = "प्रवरा डावा कालवा चारी क्र. 17, गट नं. 93, लोणी बु. येथील शेतीस पाणी मिळण्याबाबत विनंती.";
+
+            // Define the body using backticks (`) to preserve line breaks exactly as you typed them
+            const body = `प्रति,
+कार्यकारी अभियंता महोदय,
+प्रवरा डावा कालवा विभाग,
+ता. राहाता, जि. अहिल्यानगर.
+
+विषय : प्रवरा डावा कालवा चारी क्र. 17, गट नं. 93, लोणी बु. येथील शेतीस पाणी मिळण्याबाबत विनंती.
+
+महोदय,
+सप्रेम नमस्कार.
+
+वरील विषयास अनुसरून नम्र विनंती करतो की, माझी शेती लोणी बु., ता. राहाता, जि. अहिल्यानगर येथे असून ती गट नंबर 93 मध्ये आहे. माझ्या शेतीमध्ये मी जांभळाची झाडे लावलेली आहेत. त्या झाडांच्या वाढीसाठी व संगोपनासाठी पाणी मिळणे अत्यंत आवश्यक आहे.
+
+मी शासनाच्या नियमानुसार पाणीपट्टी नियमित भरत असून पाण्यासाठी आवश्यक अर्ज देखील केलेला आहे. तसेच नेहमीप्रमाणे मी प्रवरा डावा कालवा चारी क्र. 17 ने पाणी घेत आहे.
+
+तरी आपणास नम्र विनंती आहे की, प्रवरा डावा कालवा चारी क्र. 17 ने माझ्या गट नं. 93, लोणी बु. येथील शेतीस पाणी मिळण्याची व्यवस्था करून द्यावी. आपण माझ्या विनंतीचा सहानुभूतीपूर्वक विचार करून आवश्यक ती कार्यवाही करावी, ही नम्र विनंती.
+
+धन्यवाद.
+
+दिनांक :11/03/2026
+ठिकाण : लोणी बु.
+
+आपला विश्वासू,
+(श्री. केरूनाथ दशरथ विखे)
+मु. पो. बळी नारायण वस्ती,
+लोणी बु., ता. राहाता,
+जि. अहिल्यानगर.
+मो. नं. : 9511745746`;
+
+            // Encode the text so URLs can process Marathi characters and spaces correctly
+            const mailtoLink = "mailto:?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
+
+            // Redirect to the mail client
+            window.location.href = mailtoLink;
+        }
+    </script>
+
+</body>
+
+</html>
