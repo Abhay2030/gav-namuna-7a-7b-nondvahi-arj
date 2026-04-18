@@ -9,6 +9,7 @@
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             height: 100vh;
@@ -24,6 +25,7 @@
             text-align: center;
             max-width: 500px;
             width: 90%;
+            position: relative;
         }
 
         h2 {
@@ -74,6 +76,15 @@
         .email-btn:active {
             transform: scale(0.98);
         }
+
+        /* छोटा वॉटरमार्क स्टाईल */
+        .watermark {
+            margin-top: 20px;
+            font-size: 12px;
+            color: #999;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
     </style>
 </head>
 
@@ -81,7 +92,7 @@
 
     <div class="card">
         <h2>गाव नमुना ७-अ व ७-ब नोंदवही अर्ज</h2>
-        <p>खालील बटणावर क्लिक करा. तुमचा ईमेल ॲप उघडेल आणि संपूर्ण मेसेज आपोआप टाईप होईल. तुम्ही फक्त समोरच्याचा ईमेल आयडी टाकून सेंड करू शकता.</p>
+        <p>खालील बटणावर क्लिक करा. तुमचा ईमेल ॲप उघडेल आणि संपूर्ण मेसेज आपोआप टाईप होईल.</p>
         
         <div class="alert-box">
             ⚠️ महत्वाची सूचना: ईमेल पाठवण्यापूर्वी 'Attachment file Sample.pdf' फाईल जोडायला विसरू नका.
@@ -92,8 +103,15 @@
         </button>
     </div>
 
+    <div class="watermark">
+        design by Abhay Donde
+    </div>
+
     <script>
         function composeEmail() {
+            // All To emails
+            const toEmail = "tahsilrahata1999@gmail.com,sdoshirdi@gmail.com,tahsildar.gad.ahmednagar@gmail.com,protocolnagar11@gmail.com,psec.revenue@maharashtra.gov.in,tenancynagar@gmail.com,socialwokerrti2005@gmail.com";
+            
             // All CC emails
             const ccEmail = "sdoshirdi@gmail.com,sdopathardi77@gmail.com,sdo.srigondaparner@gmail.com,sdokarjat@yahoo.co.in,subsangamner@gmail.com.com,sdoshrirampur@rediffmail.com,prantnagar@gmail.com,dom7.revenuemh@mah.gov.in,divcom.nagpur@maharashtra.gov.in,scy.nashikdiv@gmail.com,divcomnashik@gmail.com,commissioner.revenue@gmail.com,dcrngp@gmail.com,divcomrtinashik@gmail.com,crunsk-divcom@mah.gov.in,dcgeneral.123@gmail.com,divcomabd@gmail.com,rbkonkan@gmail.com,konkandcr@gmail.com,dcraurangabad@gmail.com,divcom.nc@gmail.com,dycom.restt.amravati@gmail.com,dcr_amravati@rediffmail.com";
             
@@ -103,7 +121,7 @@
             // New Subject
             const subject = "महाराष्ट्र जमीन महसूल नोंदवही नियम, 1971 अन्वये गाव नमुना ७-अ व ७-ब नोंदवही नियमित ठेवणे व प्रमाणित उतारे देणे बाबत – न्यायालयीन आदेशाच्या अंमलबजावणीसाठी";
 
-            // New Body Content (Hidden from the website interface)
+            // New Body Content
             const body = `विषय : महाराष्ट्र जमीन महसूल नोंदवही नियम, 1971 अन्वये गाव नमुना ७-अ व ७-ब नोंदवही नियमित ठेवणे व प्रमाणित उतारे देणे बाबत – न्यायालयीन आदेशाच्या अंमलबजावणीसाठी अर्ज.
 
 अर्जदार:- 
@@ -134,8 +152,8 @@
 आपला विश्वासू,
 अर्जदार:-`;
 
-            // Redirect to the mail client
-            const mailtoLink = "mailto:?cc=" + ccEmail + "&bcc=" + bccEmail + "&subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
+            // Redirect to the mail client with To, CC, and BCC
+            const mailtoLink = "mailto:" + toEmail + "?cc=" + ccEmail + "&bcc=" + bccEmail + "&subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
             window.location.href = mailtoLink;
         }
     </script>
