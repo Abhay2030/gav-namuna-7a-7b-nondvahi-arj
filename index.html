@@ -1,143 +1,195 @@
 <!DOCTYPE html>
 <html lang="mr">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>शेतीस पाणी मिळण्याबाबत विनंती</title>
+    <title>गाव नमुना ७-अ व ७-ब नोंदवही अर्ज</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --primary-color: #0056b3;
+            --primary-hover: #004494;
+            --bg-color: #f4f7f6;
+            --text-color: #333;
+        }
+
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Noto Sans Devanagari', sans-serif;
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 20px;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            background-color: #f0f2f5;
-            margin: 0;
+            min-height: 100vh;
         }
 
-        .card {
-            background: #ffffff;
-            padding: 40px;
+        .container {
+            background: #fff;
+            max-width: 700px;
+            width: 100%;
+            padding: 30px;
             border-radius: 12px;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-            text-align: center;
-            max-width: 500px;
-            width: 90%;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            border-top: 5px solid var(--primary-color);
         }
 
         h2 {
-            color: #333;
-            font-size: 22px;
-            margin-bottom: 10px;
-        }
-
-        p {
-            color: #666;
-            font-size: 16px;
+            color: var(--primary-color);
+            text-align: center;
+            font-size: 20px;
             margin-bottom: 20px;
             line-height: 1.5;
         }
 
-        .alert-box {
-            background-color: #fff3cd;
-            color: #856404;
-            padding: 12px;
+        .preview-box {
+            background: #fafafa;
+            border: 1px solid #ddd;
+            padding: 15px;
             border-radius: 8px;
-            border: 1px solid #ffeeba;
-            font-size: 15px;
-            font-weight: bold;
-            margin-bottom: 25px;
-            text-align: left;
+            font-size: 14px;
+            max-height: 350px;
+            overflow-y: auto;
+            white-space: pre-wrap;
+            margin-bottom: 20px;
+            color: #444;
+            line-height: 1.6;
         }
 
-        .email-btn {
-            background-color: #EA4335;
-            /* Gmail Red */
-            color: white;
-            border: none;
-            padding: 15px 30px;
-            font-size: 18px;
-            font-weight: bold;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: background-color 0.3s ease, transform 0.1s ease;
-            display: inline-flex;
-            align-items: center;
+        .btn-group {
+            display: flex;
             gap: 10px;
+            flex-wrap: wrap;
         }
 
-        .email-btn:hover {
-            background-color: #C5221F;
+        button {
+            flex: 1;
+            padding: 12px 20px;
+            font-size: 16px;
+            font-weight: 600;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
         }
 
-        .email-btn:active {
-            transform: scale(0.98);
+        .btn-send {
+            background-color: #ea4335;
+            color: white;
         }
+
+        .btn-send:hover {
+            background-color: #d33426;
+        }
+
+        .btn-copy {
+            background-color: #6c757d;
+            color: white;
+        }
+
+        .btn-copy:hover {
+            background-color: #5a6268;
+        }
+
+        #toast {
+            visibility: hidden;
+            min-width: 200px;
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            border-radius: 4px;
+            padding: 10px;
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1;
+        }
+
+        #toast.show {
+            visibility: visible;
+            animation: fadein 0.5s, fadeout 0.5s 2.5s;
+        }
+
+        @keyframes fadein { from {bottom: 0; opacity: 0;} to {bottom: 30px; opacity: 1;} }
+        @keyframes fadeout { from {bottom: 30px; opacity: 1;} to {bottom: 0; opacity: 0;} }
     </style>
 </head>
-
 <body>
 
-    <div class="card">
-        <h2>शेतीस पाणी मिळण्याबाबत विनंती अर्ज</h2>
-        <p>खालील बटणावर क्लिक करा. तुमचा ईमेल ॲप उघडेल आणि संपूर्ण मेसेज आपोआप टाईप होईल. तुम्ही फक्त समोरच्याचा ईमेल आयडी टाकून सेंड करू शकता.</p>
-        
-        <div class="alert-box">
-            ⚠️ महत्वाची सूचना: ईमेल पाठवण्यापूर्वी 'Attachment file.pdf' फाईल जोडायला विसरू नका.
-        </div>
+<div class="container">
+    <h2>महाराष्ट्र जमीन महसूल नोंदवही नियम, १९७१ अन्वये गाव नमुना ७-अ व ७-ब नोंदणी अर्ज</h2>
+    
+    <div class="preview-box" id="emailBody">
+विषय : महाराष्ट्र जमीन महसूल नोंदवही नियम, 1971 अन्वये गाव नमुना ७-अ व ७-ब नोंदवही नियमित ठेवणे व प्रमाणित उतारे देणे बाबत – न्यायालयीन आदेशाच्या अंमलबजावणीसाठी अर्ज.
 
-        <button class="email-btn" onclick="composeEmail()">
-            ✉️ ईमेल द्वारे पाठवा
-        </button>
-    </div>
+अर्जदार:- 
+पत्ता:- 
+संपर्क क्रमांक:- 
+ई-मेल आयडी:- 
 
-    <script>
-        function composeEmail() {
-            // Updated CC to include both emails, separated by a comma
-            const ccEmail = "vitthalvikhe@gmail.com,potesomanath@gmail.com";
-            const bccEmail = "kerunathvikhe@gmail.com";
-
-            // Define the subject
-            const subject = "प्रवरा डावा कालवा चारी क्र. 17, गट नं. 93, लोणी बु. येथील शेतीस पाणी मिळण्याबाबत विनंती.";
-
-            // Define the body
-            const body = `प्रति,
-कार्यकारी अभियंता महोदय,
-प्रवरा डावा कालवा विभाग,
-ता. राहाता, जि. अहिल्यानगर.
-
-विषय : प्रवरा डावा कालवा चारी क्र. 17, गट नं. 93, लोणी बु. येथील शेतीस पाणी मिळण्याबाबत विनंती.
+संदर्भ:- 1.औरंगाबाद खंडपीठ (Writ Petition No. 5599 of 2021
+        2. महाराष्ट्र जमीन महसूल नोंदवही नियम, 1971
 
 महोदय,
-सप्रेम नमस्कार.
+मी खाली सही करणारा अर्जदार, आपणास विनम्रतेने सादर करतो की, मा. मुंबई उच्च न्यायालय, औरंगाबाद खंडपीठ यांनी दिनांक 23 मार्च 2026 रोजी दिलेल्या आदेशानुसार (Writ Petition No. 5599 of 2021), महाराष्ट्र जमीन महसूल नोंदवही नियम, 1971 अंतर्गत गाव नमुना ७-अ व ७-ब या नोंदवही नियमितपणे ठेवणे तसेच संबंधित शेतकऱ्यांना त्याचे प्रमाणित उतारे उपलब्ध करून देणे ही संबंधित महसूल यंत्रणेची वैधानिक व बंधनकारक जबाबदारी आहे.
 
-वरील विषयास अनुसरून नम्र विनंती करतो की, माझी शेती लोणी बु., ता. राहाता, जि. अहिल्यानगर येथे असून ती गट नंबर 93 मध्ये आहे. माझ्या शेतीमध्ये मी जांभळाची झाडे लावलेली आहेत. त्या झाडांच्या वाढीसाठी व संगोपनासाठी पाणी मिळणे अत्यंत आवश्यक आहे.
+उक्त न्यायालयीन आदेशामध्ये संबंधित महसूल अधिकाऱ्यांना स्पष्टपणे निर्देश देण्यात आलेले असून, अर्जदारांस व इतर पात्र शेतकऱ्यांना गाव नमुना ७-अ व ७-ब चे प्रमाणित उतारे देण्याबाबत कोणतीही टाळाटाळ अथवा विलंब करणे ग्राह्य धरले जाणार नाही, असे अधोरेखित करण्यात आले आहे.
 
-मी शासनाच्या नियमानुसार पाणीपट्टी नियमित भरत असून पाण्यासाठी आवश्यक अर्ज देखील केलेला आहे. तसेच नेहमीप्रमाणे मी प्रवरा डावा कालवा चारी क्र. 17 ने पाणी घेत आहे.
+तथापि, प्रत्यक्षात संबंधित कार्यालयामार्फत नमुना ७-ब चे प्रमाणित उतारे देण्यात अनावश्यक विलंब होत असून अनेक शेतकरी आजही त्यापासून वंचित आहेत. ही बाब न्यायालयीन आदेशाचे उल्लंघन ठरत असून प्रशासकीय निष्क्रियतेचे द्योतक आहे.
 
-सोबत 'Attachment file Sample.pdf' फाईल जोडलेली आहे, कृपया अवलोकन करावे.
+त्या अनुषंगाने, आपणास विनंती नसून विनम्र निवेदन करण्यात येते की—
+1. मा. उच्च न्यायालयाच्या वरील आदेशाची तात्काळ व काटेकोर अंमलबजावणी करण्यात यावी.
+2. गाव नमुना ७-अ व ७-ब या नोंदवही अद्ययावत व नियमितपणे ठेवण्यात याव्यात.
+3. अर्जदारास तसेच इतर पात्र शेतकऱ्यांना नमुना ७-अ व ७-ब चे प्रमाणित उतारे विलंब न लावता उपलब्ध करून देण्यात यावेत.
+4. या संदर्भात केलेल्या कार्यवाहीचा अहवाल लेखी स्वरूपात अर्जदारास कळविण्यात यावा.
 
-तरी आपणास नम्र विनंती आहे की, प्रवरा डावा कालवा चारी क्र. 17 ने माझ्या गट नं. 93, लोणी बु. येथील शेतीस पाणी मिळण्याची व्यवस्था करून द्यावी. आपण माझ्या विनंतीचा सहानुभूतीपूर्वक विचार करून आवश्यक ती कार्यवाही करावी, ही नम्र विनंती.
-
-धन्यवाद.
-
-दिनांक :11/03/2026
-ठिकाण : लोणी बु.
+अन्यथा, अर्जदारास आपल्या हक्कांच्या संरक्षणासाठी योग्य त्या कायदेशीर उपाययोजना करण्याचा अधिकार राखून ठेवावा लागेल, याची नम्र नोंद घ्यावी.
 
 आपला विश्वासू,
-(श्री. केरूनाथ दशरथ विखे)
-मु. पो. बळी नारायण वस्ती,
-लोणी बु., ता. राहाता,
-जि. अहिल्यानगर.
-मो. नं. : 9511745746`;
+अर्जदार:-
+    </div>
 
-            // Redirect to the mail client
-            const mailtoLink = "mailto:?cc=" + ccEmail + "&bcc=" + bccEmail + "&subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
-            window.location.href = mailtoLink;
-        }
-    </script>
+    <div class="btn-group">
+        <button class="btn-send" onclick="composeEmail()">
+            ✉️ ईमेलद्वारे पाठवा
+        </button>
+        <button class="btn-copy" onclick="copyContent()">
+            📋 मजकूर कॉपी करा
+        </button>
+    </div>
+</div>
+
+<div id="toast">मजकूर कॉपी केला!</div>
+
+<script>
+    const subject = "महाराष्ट्र जमीन महसूल नोंदवही नियम, 1971 अन्वये गाव नमुना ७-अ व ७-ब नोंदवही नियमित ठेवणे व प्रमाणित उतारे देणे बाबत – न्यायालयीन आदेशाच्या अंमलबजावणीसाठी";
+    
+    // CC मधील सर्व आयडी
+    const ccList = "sdoshirdi@gmail.com,sdopathardi77@gmail.com,sdo.srigondaparner@gmail.com,sdokarjat@yahoo.co.in,subsangamner@gmail.com.com,sdoshrirampur@rediffmail.com,prantnagar@gmail.com,dom7.revenuemh@mah.gov.in,divcom.nagpur@maharashtra.gov.in,scy.nashikdiv@gmail.com,divcomnashik@gmail.com,commissioner.revenue@gmail.com,dcrngp@gmail.com,divcomrtinashik@gmail.com,crunsk-divcom@mah.gov.in,dcgeneral.123@gmail.com,divcomabd@gmail.com,rbkonkan@gmail.com,konkandcr@gmail.com,dcraurangabad@gmail.com,divcom.nc@gmail.com,dycom.restt.amravati@gmail.com,dcr_amravati@rediffmail.com";
+
+    // BCC मधील सर्व आयडी
+    const bccList = "cm@maharashtra.gov.in,sec.rdd@maharashtra.gov.in,cru-collahmednagar@mah.gov.in,kerunathvikhe@gmail.com";
+
+    function composeEmail() {
+        const bodyText = document.getElementById('emailBody').innerText;
+        const mailtoLink = "mailto:?cc=" + ccList + "&bcc=" + bccList + "&subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(bodyText);
+        window.location.href = mailtoLink;
+    }
+
+    function copyContent() {
+        const bodyText = document.getElementById('emailBody').innerText;
+        navigator.clipboard.writeText("विषय: " + subject + "\n\n" + bodyText).then(() => {
+            const toast = document.getElementById("toast");
+            toast.className = "show";
+            setTimeout(() => { toast.className = toast.className.replace("show", ""); }, 3000);
+        });
+    }
+</script>
 
 </body>
-
 </html>
